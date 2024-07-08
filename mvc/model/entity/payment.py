@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+import re
+from datetime import datetime
+
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 
 from mvc.model.entity.base import Base
@@ -8,9 +11,9 @@ from mvc.model.entity.person import Person
 
 class Payment(Base):
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
-    _date_time=Column('date_time',Integer,nullable=False)
-    _amount=Column('amount',String(20),nullable=False)
-    _description=Column('description',String(20),nullable=False)
+    _date_time = Column('date_time', DateTime, nullable=False)
+    _amount = Column('amount', Integer, nullable=False)
+    _description = Column('description', String(20), nullable=False)
 
     _sim_card_id = Column("sim_Card_id", ForeignKey("sim_card_tbl.id"))
     sim_card = relationship("SimCard")
@@ -47,3 +50,25 @@ class Payment(Base):
     @description.setter
     def description(self, description):
         self._description = description
+
+    #validator
+
+    def date_time_validator(self, date_time):
+        if isinstance(date_time,datetime):
+            return date_time
+        else:
+            raise ValueError("invalid date_time")
+
+
+    def amount_validator(self, amount):
+        if isinstance(amount, int) and re.match(r"^\d{10}$", amount):
+            return amount
+        else:
+            raise ValueError("invalid amount")
+
+
+    def description_validator(self, description):
+        if isinstance(description, str) and re.match(r"^[a-zA-Z\s]{20}$", description):
+            return description
+        else:
+            raise ValueError("invalid description")
