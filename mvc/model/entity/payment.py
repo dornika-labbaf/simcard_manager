@@ -1,10 +1,12 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
+
+from mvc.model.entity.base import Base
 from mvc.model.entity.sim_card import SimCard
 from mvc.model.entity.person import Person
 
 
-class Payment:
+class Payment(Base):
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
     _date_time=Column('date_time',Integer,nullable=False)
     _amount=Column('amount',String(20),nullable=False)

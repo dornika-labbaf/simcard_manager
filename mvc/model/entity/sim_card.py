@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
+from mvc.model.entity.base import Base
+
 
 class SimCard(Base):
     __tablenames__ = "sim_card_tb;"

@@ -1,8 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
+from mvc.model.entity.base import Base
 
-class Person:
+
+class Person(Base):
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
     _name = Column('name', String, nullable=False)
     _family = Column('family', String, nullable=False)
