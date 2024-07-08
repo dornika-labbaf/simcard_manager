@@ -1,4 +1,5 @@
 import re
+from datetime import date, datetime
 
 
 def pattern_validator(pattern, message):
@@ -74,8 +75,11 @@ class Validator:
             raise ValueError(message)
 
     @staticmethod
-    def national_id_validator(national_id, message):
-        if isinstance(national_id, str) and re.match(r"^\d{10}$", national_id):
-            return national_id
+    def nid_validator(nid, message):
+        if isinstance(nid, str) and re.match(r"^\d{10}$", nid):
+            return nid
         else:
             raise ValueError(message)
+
+
+
