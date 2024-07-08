@@ -10,7 +10,7 @@ class SimCard(Base):
     __tablenames__ = "sim_card_tb";
 
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
-    _number = Column('number', String(11), nullable=False)
+    _number = Column('number', String(20), nullable=False)
     _operator = Column('operator', String(20), nullable=False)
     _status = Column('status', String(20), nullable=False)
     _sim_type = Column('sim_type', String(20), nullable=False)

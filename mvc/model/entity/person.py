@@ -8,9 +8,9 @@ from mvc.model.entity.base import Base
 
 class Person(Base):
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
-    _name = Column('name', String, nullable=False)
-    _family = Column('family', String, nullable=False)
-    _nid = Column('nid', String, nullable=False)
+    _name = Column('name', String(20), nullable=False)
+    _family = Column('family', String(20), nullable=False)
+    _nid = Column('nid', String(20), nullable=False)
     _date_birth = Column('date_birth', Date, nullable=False)
 
     def __init__(self, name, family, nid, date_birth):
