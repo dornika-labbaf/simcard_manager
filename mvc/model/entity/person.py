@@ -7,6 +7,7 @@ from mvc.model.entity.base import Base
 
 
 class Person(Base):
+    __tablenames__ = 'person;'
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
     _name = Column('name', String(20), nullable=False)
     _family = Column('family', String(20), nullable=False)
@@ -19,6 +20,15 @@ class Person(Base):
         self._family = family
         self._nid = nid
         self._date_birth = date_birth
+
+    # id
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     # name
     @property
@@ -56,13 +66,11 @@ class Person(Base):
     def family(self, family):
         self._family = family
 
-
     def name_validator(self, name):
         if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{20}$", name):
             return name
         else:
             raise ValueError("invalid name")
-
 
     def nid_validator(self, nid):
         if isinstance(nid, str) and re.match(r"^[\d]{10}$", nid):
@@ -70,13 +78,11 @@ class Person(Base):
         else:
             raise ValueError("invalid nid")
 
-
     def family_validator(self, family):
         if isinstance(family, str) and re.match(r"^[a-zA-Z\s]{20}$", family):
             return family
         else:
             raise ValueError("invalid family")
-
 
     def date_birth_validator(self, date_birth):
         if isinstance(date_birth, Date):

@@ -7,7 +7,7 @@ from mvc.model.entity.base import Base
 
 
 class SimCard(Base):
-    __tablenames__ = "sim_card_tb";
+    __tablenames__ = 'sim_card_tb;'
 
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
     _number = Column('number', String(20), nullable=False)
@@ -26,6 +26,15 @@ class SimCard(Base):
         self._status = status
         self._sim_type = sim_type
         self._charge = charge
+
+    # id
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     # number
     @property
@@ -80,13 +89,11 @@ class SimCard(Base):
         else:
             raise ValueError("invalid number")
 
-
     def operator_validator(self, operator):
         if isinstance(operator, str) and re.match(r"^[Irancel|hamrah aval|rightel|shatel\s]$", operator):
             return operator
         else:
             raise ValueError("invalid operator")
-
 
     def status_validator(self, status):
         if isinstance(status, str) and re.match(r"^[a-zA-Z\s]{20}$", status):
@@ -94,13 +101,11 @@ class SimCard(Base):
         else:
             raise ValueError("invalid status")
 
-
     def sim_type_validator(self, sim_type):
         if isinstance(sim_type, str) and re.match(r"^[a-zA-Z\s]{20}$", sim_type):
             return sim_type
         else:
             raise ValueError("invalid sim_type")
-
 
     def charge_validator(self, charge):
         if isinstance(charge, str) and re.match(r"^[a-zA-Z\s]{20}$", charge):

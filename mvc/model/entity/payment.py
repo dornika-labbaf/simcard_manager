@@ -10,6 +10,7 @@ from mvc.model.entity.person import Person
 
 
 class Payment(Base):
+    __tablenames__ = 'payment_tb;'
     _id = Column('id', Integer, primary_key=True, auto_increment=True)
     _date_time = Column('date_time', DateTime, nullable=False)
     _amount = Column('amount', Integer, nullable=False)
@@ -23,6 +24,15 @@ class Payment(Base):
         self._date_time = date_time
         self._amount = amount
         self._description = description
+
+    # id
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     # date_time
     @property
@@ -51,21 +61,19 @@ class Payment(Base):
     def description(self, description):
         self._description = description
 
-    #validator
+    # validator
 
     def date_time_validator(self, date_time):
-        if isinstance(date_time,datetime):
+        if isinstance(date_time, datetime):
             return date_time
         else:
             raise ValueError("invalid date_time")
-
 
     def amount_validator(self, amount):
         if isinstance(amount, int) and re.match(r"^\d{10}$", amount):
             return amount
         else:
             raise ValueError("invalid amount")
-
 
     def description_validator(self, description):
         if isinstance(description, str) and re.match(r"^[a-zA-Z\s]{20}$", description):
