@@ -1,15 +1,15 @@
 import re
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from mvc.model.entity.base import Base
+from model.entity.base import Base
 
 
 class SimCard(Base):
-    __tablenames__ = 'sim_card_tb;'
+    __tablename__ = 'sim_card_tbl'
 
-    _id = Column('id', Integer, primary_key=True, auto_increment=True)
+    _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _number = Column('number', String(20), nullable=False)
     _operator = Column('operator', String(20), nullable=False)
     _status = Column('status', String(20), nullable=False)

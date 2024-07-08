@@ -1,21 +1,20 @@
 import re
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Date
 
-from mvc.model.entity.base import Base
+from model.entity.base import Base
 
 
 class Person(Base):
-    __tablenames__ = 'person;'
-    _id = Column('id', Integer, primary_key=True, auto_increment=True)
+    __tablename__ = 'person_tbl'
+    _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _name = Column('name', String(20), nullable=False)
     _family = Column('family', String(20), nullable=False)
     _nid = Column('nid', String(20), nullable=False)
     _date_birth = Column('date_birth', Date, nullable=False)
 
     def __init__(self, name, family, nid, date_birth):
-        self._id = id
+        self._id = None
         self._name = name
         self._family = family
         self._nid = nid

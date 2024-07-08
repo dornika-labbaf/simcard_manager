@@ -1,17 +1,15 @@
 import re
 from datetime import datetime
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 
-from mvc.model.entity.base import Base
-from mvc.model.entity.sim_card import SimCard
-from mvc.model.entity.person import Person
+from model.entity import *
 
 
 class Payment(Base):
-    __tablenames__ = 'payment_tb;'
-    _id = Column('id', Integer, primary_key=True, auto_increment=True)
+    __tablename__ = 'payment_tbl'
+    _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _date_time = Column('date_time', DateTime, nullable=False)
     _amount = Column('amount', Integer, nullable=False)
     _description = Column('description', String(20), nullable=False)
