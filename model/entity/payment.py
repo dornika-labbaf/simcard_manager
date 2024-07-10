@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-
+from model.entity.base import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 

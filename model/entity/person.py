@@ -1,7 +1,7 @@
 import re
 
 from sqlalchemy import Column, Integer, String, Date
-
+from model.entity import *
 from model.entity.base import Base
 
 

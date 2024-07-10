@@ -2,7 +2,7 @@ import re
 
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-
+from model.entity import *
 from model.entity.base import Base
 
 
