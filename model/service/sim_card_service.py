@@ -22,7 +22,7 @@ class SimcardService:
 
     def remove(id):
         sim_card_da = DataAccess(SimCard)
-        sim_card_da.remove(id)
+        return sim_card_da.remove(id)
 
 
     @staticmethod
@@ -34,4 +34,6 @@ class SimcardService:
     def find_by_id(id):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by_id(id)
+
+
 
