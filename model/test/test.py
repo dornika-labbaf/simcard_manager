@@ -1,15 +1,11 @@
 from datetime import datetime
-from mvc.controller.sim_card_controller import SimCardController
 from model.da.da import DataAccess
 from model.entity import Person
-from model.entity import SimCard
-from model.entity.payment import Payment
 
-
-#person = Person("ali","alipour","1234567890", datetime.now(),"mamad","@dornika.email.com","shahrach5")
-#person_da = DataAccess(Person)
-#person_da.save(person)
-#print(person)
+person = Person("ali","alipour","1234567890", datetime.now(),"ahmad","@dornika.email.com","shahrach5")
+person_da = DataAccess(Person)
+person_da.save(person)
+print(person)
 
 #sim_card = SimCard("09038952277","irancell","daemi","ffff","etebari")
 #sim_card._owner_id = 5

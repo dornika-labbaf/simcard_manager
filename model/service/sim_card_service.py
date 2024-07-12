@@ -1,6 +1,5 @@
 from model.entity.sim_card import SimCard
 from model.da.da import DataAccess
-from mvc.controller.exeptions.exeptions import SimCardNotFoundError
 
 
 class SimcardService:
