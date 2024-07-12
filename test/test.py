@@ -5,7 +5,8 @@ from model.entity import Person
 from model.entity import SimCard
 from model.entity.payment import Payment
 
-#person = Person("ali","alipour","1234567890", datetime.now())
+
+#person = Person("ali","alipour","1234567890", datetime.now(),"mamad","@dornika.email.com","shahrach5")
 #person_da = DataAccess(Person)
 #person_da.save(person)
 #print(person)
@@ -21,5 +22,5 @@ from model.entity.payment import Payment
 #payment_da.save(payment)
 #print(payment)
 
-sim_card = SimCardController.save("09038952277","irancell","ok","daemi","55556",)
-print(sim_card)
+#sim_card = SimCardController.save("09038952277","irancell","ok","daemi","55556",)
+#print(sim_card)

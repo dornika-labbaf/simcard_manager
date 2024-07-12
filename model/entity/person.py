@@ -1,8 +1,7 @@
 import re
-
+from model.entity.base import Base
 from sqlalchemy import Column, Integer, String, Date
 from model.entity import *
-from model.entity.base import Base
 
 
 class Person(Base):
@@ -12,13 +11,19 @@ class Person(Base):
     _family = Column('family', String(20), nullable=False)
     _nid = Column('nid', String(20), nullable=False)
     _date_birth = Column('date_birth', Date, nullable=False)
+    _father_name = Column('father_name', String(20), nullable=False)
+    _email = Column('email', String(20), nullable=False)
+    _address = Column('address', String(20), nullable=False)
 
-    def __init__(self, name, family, nid, date_birth):
+    def __init__(self, name, family, nid, date_birth, father_name, email, address):
         self._id = None
         self._name = name
         self._family = family
         self._nid = nid
         self._date_birth = date_birth
+        self._father_name = father_name
+        self._email = email
+        self._address = address
 
     # id
     @property
@@ -65,6 +70,33 @@ class Person(Base):
     def family(self, family):
         self._family = family
 
+    # father_name
+    @property
+    def father_name(self):
+        return self._father_name
+
+    @father_name.setter
+    def father_name(self, father_name):
+        self._father_name = father_name
+
+    # email
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, email):
+        self._email = email
+
+    # address
+    @property
+    def address(self):
+        return self._address
+
+    @address.setter
+    def address(self, address):
+        self._address = address
+
     def name_validator(self, name):
         if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{20}$", name):
             return name
@@ -88,3 +120,26 @@ class Person(Base):
             return date_birth
         else:
             raise ValueError("invalid date_birth")
+
+    def father_name_validator(self, father_name):
+        if isinstance(father_name, str) and re.match(r"^[a-zA-Z\s]{20}$", father_name):
+            return father_name
+        else:
+            raise ValueError("invalid father_name")
+
+    def email_validator(self, email):
+        if isinstance(email, str) and re.match(r"^@\w(yahoo|gmail).com$", email, re.I):
+            return email
+        else:
+            raise ValueError("invalid email")
+
+    def address_validator(self, address):
+        if isinstance(address, str) and re.match(r"^[\w\s]{20}$", address, re.I):
+            return address
+        else:
+            raise ValueError("invalid address")
+
+        person = Person("ali", "alipour", "1234567890", datetime.now(), "mamad", "@dornika.email.com", "shahrach5")
+        person_da = DataAccess(Person)
+        person_da.save(person)
+        print(person)
