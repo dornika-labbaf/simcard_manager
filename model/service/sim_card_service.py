@@ -35,5 +35,18 @@ class SimcardService:
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by_id(id)
 
+    @staticmethod
+    def find_by(number):
+        sim_card_da = DataAccess(SimCard)
+        return sim_card_da.find_by(SimCard.number == number)
 
 
+    @staticmethod
+    def find_by(operator):
+        sim_card_da = DataAccess(SimCard)
+        return sim_card_da.find_by(SimCard.operator == operator)
+
+    @staticmethod
+    def find_by(sim_type):
+        sim_card_da = DataAccess(SimCard)
+        return sim_card_da.find_by(SimCard.sim_type == sim_type)

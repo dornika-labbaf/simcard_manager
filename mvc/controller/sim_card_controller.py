@@ -55,3 +55,13 @@ class SimCardController:
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
+
+    @staticmethod
+    def find_by_number(number):
+        try:
+            sim_card_list = SimCardController.find_by_number(number)
+            Logger.info(f"Simcard find by number({number})")
+            return True, sim_card_list
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"

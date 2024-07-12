@@ -16,8 +16,8 @@ class SimCard(Base):
     _sim_type = Column('sim_type', String(20), nullable=False)
     _charge = Column('charge', String(20), nullable=False)
 
-    _owner_id = Column("owner_id", Integer, ForeignKey("person_tbl.id"))
-    owner = relationship("Person")
+    #_owner_id = Column("owner_id", Integer, ForeignKey("person_tbl.id"))
+    #owner = relationship("Person")
 
     def __init__(self, number, operator, status, sim_type, charge):
         self._id = None
@@ -108,7 +108,7 @@ class SimCard(Base):
             raise ValueError("invalid sim_type")
 
     def charge_validator(self, charge):
-        if isinstance(charge, str) and re.match(r"^[a-zA-Z\s]{20}$", charge):
+        if isinstance(charge, str) and re.match(r"^[\d]{20}$", charge):
             return charge
         else:
             raise ValueError("invalid charge")
