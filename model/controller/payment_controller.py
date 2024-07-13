@@ -59,7 +59,7 @@ class PaymentController:
     @staticmethod
     def find_by_amount(amount):
         try:
-            payment_list = PaymentService.find_by_amount()
+            payment_list = PaymentService.find_by_amount(amount)
             Logger.info(f"payment find by amount({amount})")
             return True, payment_list
         except Exception as e:
@@ -69,7 +69,7 @@ class PaymentController:
     @staticmethod
     def find_by_date_time(date_time):
         try:
-            payment = PaymentService.find_by_date_time()
+            payment = PaymentService.find_by_date_time(date_time)
             Logger.info(f"payment by date_time({date_time})")
             return True, payment
         except Exception as e:

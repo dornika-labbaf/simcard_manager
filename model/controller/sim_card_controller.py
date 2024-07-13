@@ -69,7 +69,7 @@ class SimCardController:
     @staticmethod
     def find_by_operator(operator):
         try:
-            sim_card_list = SimCardController.find_by_number(operator)
+            sim_card_list = SimCardController.find_by_operator(operator)
             Logger.info(f"Sim card find by operator({operator})")
             return True, sim_card_list
         except Exception as e:
