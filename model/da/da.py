@@ -30,19 +30,13 @@ class DataAccess:
         session.refresh(entity)
         return entity
     #todo برای پاک کردن ارور میزنه از دیتا بیس
-   # def remove(self, entity):
-    #    session.delete(entity)
-     #   session.commit()
-      #  session.refresh(entity)
-       # return entity
-
-
-    def remove(self, id):
-        entity = session.get(self.class_name, id)
+    def remove(self, entity):
         session.delete(entity)
         session.commit()
         session.refresh(entity)
         return entity
+
+
 
     def find_all(self):
         entity_list = session.query(self.class_name).all()
