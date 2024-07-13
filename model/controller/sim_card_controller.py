@@ -50,7 +50,7 @@ class SimCardController:
     def find_by_id(id):
         try:
             sim_card = SimcardService.find_by_id()
-            Logger.info(f"sim card by id({id})")
+            Logger.info(f"sim card find by id({id})")
             return True, sim_card
         except Exception as e:
             Logger.error(f"{e}")
@@ -60,7 +60,7 @@ class SimCardController:
     def find_by_number(number):
         try:
             sim_card_list = SimCardController.find_by_number(number)
-            Logger.info(f"Simcard find by number({number})")
+            Logger.info(f"Sim card find by number({number})")
             return True, sim_card_list
         except Exception as e:
             Logger.error(f"{e}")
@@ -70,18 +70,19 @@ class SimCardController:
     def find_by_operator(operator):
         try:
             sim_card_list = SimCardController.find_by_number(operator)
-            Logger.info(f"Simcard find by operator({operator})")
+            Logger.info(f"Sim card find by operator({operator})")
             return True, sim_card_list
         except Exception as e:
             Logger.error(f"{e}")
             return False, f"{e}"
 
-        @staticmethod
-        def find_by_sim_type(sim_type):
-            try:
-                sim_card_list = SimCardController.find_by_sim_type(sim_type)
-                Logger.info(f"Simcard find by sim_type({sim_type})")
-                return True, sim_card_list
-            except Exception as e:
-                Logger.error(f"{e}")
-                return False, f"{e}"
+
+    @staticmethod
+    def find_by_sim_type(sim_type):
+        try:
+            sim_card_list = SimCardController.find_by_sim_type(sim_type)
+            Logger.info(f"Sim card find by sim_type({sim_type})")
+            return True, sim_card_list
+        except Exception as e:
+            Logger.error(f"{e}")
+            return False, f"{e}"

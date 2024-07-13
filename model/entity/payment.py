@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+
 from model.entity.base import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
@@ -11,7 +12,7 @@ class Payment(Base):
     __tablename__ = 'payment_tbl'
     _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _date_time = Column('date_time', DateTime, nullable=False)
-    _amount = Column('amount', Integer, nullable=False)
+    _amount = Column('amount', String(20), nullable=False)
     _description = Column('description', String(20), nullable=False)
 
     _sim_card_id = Column("sim_Card_id", ForeignKey("sim_card_tbl.id"))
@@ -68,7 +69,7 @@ class Payment(Base):
             raise ValueError("invalid date_time")
 
     def amount_validator(self, amount):
-        if isinstance(amount, int) and re.match(r"^\d{10}$", amount):
+        if isinstance(amount, str) and re.match(r"^\d{10}$", amount):
             return amount
         else:
             raise ValueError("invalid amount")
