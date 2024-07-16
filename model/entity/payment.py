@@ -18,6 +18,10 @@ class Payment(Base):
     _sim_card_id = Column("sim_Card_id", ForeignKey("sim_card_tbl.id"))
     sim_card = relationship("SimCard")
 
+    _person_id = Column("person_id",ForeignKey("person_tbl.id"))
+    person = relationship("Person")
+
+
     def __init__(self, date_time, amount, description):
         self._id = None
         self._date_time = date_time
