@@ -64,6 +64,10 @@ class Payment(Base):
     def description(self, description):
         self._description = description
 
+
+    def values(self):
+        return self.id, self.date_time, self.amount , self.amount
+
     # validator
 
     def date_time_validator(self, date_time):

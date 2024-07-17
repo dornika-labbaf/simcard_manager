@@ -81,6 +81,10 @@ class SimCard(Base):
     def charge(self, charge):
         self._charge = charge
 
+
+    def valuse(self):
+        return self.id,self._number,self.operator,self.status,self.sim_type,self.charge
+
     # validator
 
     def number_validator(self, number):
