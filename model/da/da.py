@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 from model.entity.base import Base
 
-connection_string = "mysql+pymysql://root:root123@localhost:3306/air_line"
+connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
 if not database_exists(connection_string):
     create_database(connection_string)
 
