@@ -1,9 +1,7 @@
-from tkinter import Tk
-
 from model.da.da import DataAccess
 from model.entity import Person, SimCard, Payment
-from model.view.component.table import Table
-from model.view.component.lable_text import TextWithLabel
+from view.component.table import Table
+from view.component.lable_text import TextWithLabel
 from tkinter import *
 
 class SimCardView:

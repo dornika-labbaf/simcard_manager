@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from model.controller.sim_card_controller import SimCardController
+from controller.sim_card_controller import SimCardController
 from model.da.da import DataAccess
 from model.entity import Person, SimCard
 from model.entity.payment import Payment
-from model.controller.payment_controller import PaymentController
-from model.controller.person_controller import PersonController
+from controller.payment_controller import PaymentController
+from controller.person_controller import PersonController
 
 
 #person = Person("ali","alipour","1234567890", datetime.now(),"ahmad","@dornika.email.com","shahrach5")

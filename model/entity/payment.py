@@ -15,7 +15,7 @@ class Payment(Base):
     _amount = Column('amount', String(20), nullable=False)
     _description = Column('description', String(100))
 
-    _sim_card_id = Column("sim_Card_id", ForeignKey("sim_card_tbl.id"))
+    _sim_card_id = Column("sim_card_id", ForeignKey("sim_card_tbl.id"))
     sim_card = relationship("SimCard")
 
     _person_id = Column("person_id",ForeignKey("person_tbl.id"))
