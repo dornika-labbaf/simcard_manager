@@ -13,7 +13,7 @@ class Payment(Base):
     _id = Column('id', Integer, primary_key=True, autoincrement=True)
     _date_time = Column('date_time', DateTime, nullable=False)
     _amount = Column('amount', String(20), nullable=False)
-    _description = Column('description', String(20), nullable=False)
+    _description = Column('description', String(100))
 
     _sim_card_id = Column("sim_Card_id", ForeignKey("sim_card_tbl.id"))
     sim_card = relationship("SimCard")
@@ -27,6 +27,8 @@ class Payment(Base):
         self._date_time = date_time
         self._amount = amount
         self._description = description
+        self._sim_card_id = None
+        self._person_id = None
 
     # id
     @property
@@ -63,6 +65,27 @@ class Payment(Base):
     @description.setter
     def description(self, description):
         self._description = description
+
+
+
+    @property
+    def sim_card_id(self):
+        return self._sim_card_id
+
+    @sim_card_id.setter
+    def id(self, sim_card_id):
+        self._sim_card_id = sim_card_id
+
+
+
+    @property
+    def person_id(self):
+        return self._person_id
+
+    @ person_id.setter
+    def id(self,  person_id):
+        self. _person_id =  person_id
+
 
 
     def values(self):

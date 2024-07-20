@@ -139,7 +139,3 @@ class Person(Base):
         else:
             raise ValueError("invalid address")
 
-        person = Person("ali", "alipour", "1234567890", datetime.now(), "mamad", "@dornika.email.com", "shahrach5")
-        person_da = DataAccess(Person)
-        person_da.save(person)
-        print(person)
