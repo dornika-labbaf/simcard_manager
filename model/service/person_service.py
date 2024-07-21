@@ -1,7 +1,7 @@
 from model.entity.person import Person
 from model.da.da import DataAccess
-from  controller.exeptions.exeptions import PersonNotFoundError
-from model.tools.decoratoor import *
+from controller.exeptions.exeptions import PersonNotFoundError
+
 
 class PersonService:
     @classmethod
@@ -41,7 +41,7 @@ class PersonService:
         person_da = DataAccess(Person)
         return person_da.find_by(Person.nid == nid)
 
-    @staticmethod
+    @classmethod
     def find_by(cls,email):
         person_da = DataAccess(Person)
         return person_da.find_by(Person.email == email)

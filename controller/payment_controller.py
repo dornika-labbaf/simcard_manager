@@ -1,77 +1,43 @@
 from model.entity.payment import Payment
 from model.service.payment_service import PaymentService
-from model.tools.logger import Logger
+from model.tools.decoratoor import exception_handling
 
 
 class PaymentController:
-    @staticmethod
-    def edit(id, date_time, amount, description):
-        try:
-            payment = Payment(id, date_time, amount, description)
-            payment.id = id
-            PaymentService.edit(payment)
-            Logger.info(f"payment edit - {payment}")
-            return True, payment
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def save(cls, date_time, amount, description):
+        payment = Payment(date_time, amount, description)
+        return True, PaymentService.save(payment)
 
-    @staticmethod
-    def save(date_time, amount, description):
-        try:
-            payment = Payment(date_time, amount, description)
-            payment.id = id
-            PaymentService.save(payment)
-            Logger.info(f"payment save - {payment}")
-            return True, payment
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def edit(cls, id, date_time, amount, description):
+        payment = Payment(id, date_time, amount, description)
+        payment.id = id
+        return True, PaymentService.edit(payment)
 
-    @staticmethod
-    def remove(id):
-        try:
-            payment = PaymentService.remove(id)
-            Logger.info(f"payment remove - {payment}")
-        except Exception as e:
-            Logger.error(f"{e}")
+    @classmethod
+    @exception_handling
+    def remove(cls, id):
+        return True, PaymentService.remove(id)
 
-    @staticmethod
-    def findAll():
-        try:
-            payment_list = PaymentService.find_all()
-            Logger.info(f"payment findAll")
-            return True, payment_list
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def findAll(cls):
+        return True, PaymentService.find_all()
 
-    @staticmethod
-    def find_by_id(id):
-        try:
-            payment = PaymentService.find_by_id()
-            Logger.info(f"payment find by id({id})")
-            return True, payment
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_by_id(cls, id):
+        return True, PaymentService.find_by_id()
 
-    @staticmethod
-    def find_by_amount(amount):
-        try:
-            payment_list = PaymentService.find_by_amount(amount)
-            Logger.info(f"payment find by amount({amount})")
-            return True, payment_list
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_by_amount(cls, amount):
+        return True, PaymentService.find_by_amount(amount)
 
-    @staticmethod
-    def find_by_date_time(date_time):
-        try:
-            payment = PaymentService.find_by_date_time(date_time)
-            Logger.info(f"payment by date_time({date_time})")
-            return True, payment
-        except Exception as e:
-            Logger.error(f"{e}")
-            return False, f"{e}"
+    @classmethod
+    @exception_handling
+    def find_by_date_time(cls, date_time):
+        return True, PaymentService.find_by_date_time(date_time)

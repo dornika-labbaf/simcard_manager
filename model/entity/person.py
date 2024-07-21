@@ -40,7 +40,6 @@ class Person(Base):
         return self._name
 
     @name.setter
-    @pattern_validator(r"^[a-zA-Z]{3,20}$","invallid name")
     def name(self, name):
         self._name = name
 

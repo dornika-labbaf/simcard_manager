@@ -3,49 +3,49 @@ from model.da.da import DataAccess
 
 
 class SimcardService:
-    @staticmethod
-    def save (sim_card):
+    @classmethod
+    def save (cls,sim_card):
         sim_card_da = DataAccess(SimCard)
         sim_card_da.save(sim_card)
         return sim_card
 
 
-    @staticmethod
-    def edit(sim_card):
+    @classmethod
+    def edit(cls,sim_card):
         sim_card_da = DataAccess(SimCard)
         sim_card_da.edit(sim_card)
         return sim_card
 
 
-    @staticmethod
+    @classmethod
 
-    def remove(id):
+    def remove(cls,id):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.remove(id)
 
 
-    @staticmethod
-    def find_all():
+    @classmethod
+    def find_all(cls):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_all()
 
-    @staticmethod
-    def find_by_id(id):
+    @classmethod
+    def find_by_id(cls,id):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by_id(id)
 
-    @staticmethod
-    def find_by(number):
+    @classmethod
+    def find_by(cls,number):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by(SimCard.number == number)
 
 
-    @staticmethod
-    def find_by(operator):
+    @classmethod
+    def find_by(cls,operator):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by(SimCard.operator == operator)
 
-    @staticmethod
-    def find_by(sim_type):
+    @classmethod
+    def find_by(cls,sim_type):
         sim_card_da = DataAccess(SimCard)
         return sim_card_da.find_by(SimCard.sim_type == sim_type)
