@@ -2,7 +2,7 @@ import re
 from model.entity.base import Base
 from sqlalchemy import Column, Integer, String, Date
 from model.entity import *
-
+from model.tools.validator import pattern_validator
 
 class Person(Base):
     __tablename__ = 'person_tbl'
@@ -40,6 +40,7 @@ class Person(Base):
         return self._name
 
     @name.setter
+    @pattern_validator(r"^[a-zA-Z]{3,20}$","invallid name")
     def name(self, name):
         self._name = name
 
@@ -96,46 +97,3 @@ class Person(Base):
     @address.setter
     def address(self, address):
         self._address = address
-
-    def name_validator(self, name):
-        if isinstance(name, str) and re.match(r"^[a-zA-Z\s]{20}$", name):
-            return name
-        else:
-            raise ValueError("invalid name")
-
-    def nid_validator(self, nid):
-        if isinstance(nid, str) and re.match(r"^[\d]{10}$", nid):
-            return nid
-        else:
-            raise ValueError("invalid nid")
-
-    def family_validator(self, family):
-        if isinstance(family, str) and re.match(r"^[a-zA-Z\s]{20}$", family):
-            return family
-        else:
-            raise ValueError("invalid family")
-
-    def date_birth_validator(self, date_birth):
-        if isinstance(date_birth, Date):
-            return date_birth
-        else:
-            raise ValueError("invalid date_birth")
-
-    def father_name_validator(self, father_name):
-        if isinstance(father_name, str) and re.match(r"^[a-zA-Z\s]{20}$", father_name):
-            return father_name
-        else:
-            raise ValueError("invalid father_name")
-
-    def email_validator(self, email):
-        if isinstance(email, str) and re.match(r"^@\w(yahoo|gmail).com$", email, re.I):
-            return email
-        else:
-            raise ValueError("invalid email")
-
-    def address_validator(self, address):
-        if isinstance(address, str) and re.match(r"^[\w\s]{20}$", address, re.I):
-            return address
-        else:
-            raise ValueError("invalid address")
-

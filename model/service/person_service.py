@@ -1,51 +1,52 @@
 from model.entity.person import Person
 from model.da.da import DataAccess
-
+from  controller.exeptions.exeptions import PersonNotFoundError
+from model.tools.decoratoor import *
 
 class PersonService:
-    @staticmethod
-    def save(person):
+    @classmethod
+    def save(cls,person):
         person_da = DataAccess(Person)
         person_da.save(person)
         return person
 
-    @staticmethod
-    def edit(person):
+    @classmethod
+    def edit(cls,person):
         person_da = DataAccess(Person)
         person_da.edit(person)
         return person
 
-    @staticmethod
-    def remove(id):
+    @classmethod
+    def remove(cls,id):
         person_da = DataAccess(Person)
         return person_da.remove(id)
 
-    @staticmethod
-    def find_all():
+    @classmethod
+    def find_all(cls):
         person_da = DataAccess(Person)
         return person_da.find_all()
 
-    @staticmethod
-    def find_by_id(id):
+    @classmethod
+    def find_by_id(cls,id):
         person_da = DataAccess(Person)
         return person_da.find_by_id(id)
 
-    @staticmethod
-    def find_by(family):
+    @classmethod
+    def find_by(cls,family):
         person_da = DataAccess(Person)
         return person_da.find_by(Person.family == family)
 
-    @staticmethod
-    def find_by(nid):
+    @classmethod
+    def find_by(cls,nid):
         person_da = DataAccess(Person)
         return person_da.find_by(Person.nid == nid)
 
     @staticmethod
-    def find_by(email):
+    def find_by(cls,email):
         person_da = DataAccess(Person)
         return person_da.find_by(Person.email == email)
 
-    @staticmethod
-    def find_by(address):
+    @classmethod
+    def find_by(cls,address):
         person_da = DataAccess(Person)
         return person_da.find_by(Person.address == address)

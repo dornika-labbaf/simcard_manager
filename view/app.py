@@ -1,4 +1,4 @@
-from view.sim_card_invoices_view import SimCardView
+from view.sim_card_manager_view import SimCardView
 
 
 

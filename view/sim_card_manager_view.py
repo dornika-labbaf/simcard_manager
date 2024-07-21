@@ -32,21 +32,21 @@ class SimCardView:
                              20,20,
                              self.person_table_click)
 
-        #self.person_table.refresh_table(self.person_da.find_all())
+        self.person_table.refresh_table(self.person_da.find_all())
 
         self.sim_card_table = Table(self.win,["id","number","operator","status","sim_type","charge"],
                                [20,60,50,50,60,60],
                                380,20,
                                self.sim_card_table_click)
 
-        #self.sim_card_table.refresh_table(self.sim_card_da.find_all())
+        self.sim_card_table.refresh_table(self.sim_card_da.find_all())
 
         self.payment_table = Table(self.win,["id","date_time", "amount", "description"],
                               [20,60,50,70],
                               700,20,
                               self.payment_table_click)
 
-        #self.payment_table.refresh_table(self.payment_da.find_all())
+        self.payment_table.refresh_table(self.payment_da.find_all())
 
 
         self.total = TextWithLabel(self.win,"total", 400,350)
