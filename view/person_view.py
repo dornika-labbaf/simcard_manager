@@ -6,7 +6,8 @@ from tkinter import *
 
 class PersonView:
     def person_table_click(self, row):
-        print(row)
+        Person = self.person_da.find_by_id(int(row[0]))
+        print(Person)
 
     def __init__(self):
         self.person_da = DataAccess(Person)
@@ -28,6 +29,7 @@ class PersonView:
         self.total = TextWithLabel(self.win, "email:", 20, 170)
         self.total = TextWithLabel(self.win, "address:", 20, 200)
 
+        Button(self.win, text='sell', width=10, command=self.person_table_click).place(x=20, y=250)
 
         self.win.bind()
         self.win.mainloop()
