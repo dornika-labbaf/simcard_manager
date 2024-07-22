@@ -3,6 +3,6 @@ from view.sim_card_manager_view import SimCardView
 
 
 
-ui = SimCardView()
+#ui = SimCardView()
 
-#ui = PersonView()
+ui = PersonView()

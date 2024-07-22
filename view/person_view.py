@@ -13,6 +13,13 @@ class PersonView:
 
         self.win = Tk()
         self.geometry("400x400")
+        self.win.title("person")
+
+        self.person_table = Table(self.win,["id","name", "family", "nid", "date_birth", "father_name", "email", "address"],
+                             [20,60,40,40,40,40,40,50],
+                             20,20,
+                             self.person_table_click)
+
 
 
         self.win.mainloop()
