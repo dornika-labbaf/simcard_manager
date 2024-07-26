@@ -29,7 +29,6 @@ class SimCardController:
     @classmethod
     @exception_handling
     def findAll(cls):
-
         return True, SimcardService.find_all()
 
     @classmethod

@@ -89,34 +89,3 @@ class SimCard(Base):
 
     def values(self):
         return self.id, self._number, self.operator, self.status, self.sim_type, self.charge
-    # validator
-
-    def number_validator(self, number):
-        if isinstance(number, str) and re.match(r"^(?:\+98|0)?9\d{9}$", number):
-            return number
-        else:
-            raise ValueError("invalid number")
-
-    def operator_validator(self, operator):
-        if isinstance(operator, str) and re.match(r"^(Irancel|hamrah aval|rightel|shatel)$", operator, re.I):
-            return operator
-        else:
-            raise ValueError("invalid operator")
-
-    def status_validator(self, status):
-        if isinstance(status, str) and re.match(r"^[a-zA-Z\s]{1,20}$", status):
-            return status
-        else:
-            raise ValueError("invalid status")
-
-    def sim_type_validator(self, sim_type):
-        if isinstance(sim_type, str) and re.match(r"^[a-zA-Z\s]{1,20}$", sim_type):
-            return sim_type
-        else:
-            raise ValueError("invalid sim_type")
-
-    def charge_validator(self, charge):
-        if isinstance(charge, str) and re.match(r"^\d{1,20}$", charge):
-            return charge
-        else:
-            raise ValueError("invalid charge")
