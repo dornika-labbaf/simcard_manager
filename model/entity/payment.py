@@ -91,22 +91,3 @@ class Payment(Base):
     def values(self):
         return self.id, self.date_time, self.amount , self.amount
 
-    # validator
-
-    def date_time_validator(self, date_time):
-        if isinstance(date_time, datetime):
-            return date_time
-        else:
-            raise ValueError("invalid date_time")
-
-    def amount_validator(self, amount):
-        if isinstance(amount, str) and re.match(r"^\d{10}$", amount):
-            return amount
-        else:
-            raise ValueError("invalid amount")
-
-    def description_validator(self, description):
-        if isinstance(description, str) and re.match(r"^[a-zA-Z\s]{20}$", description):
-            return description
-        else:
-            raise ValueError("invalid description")

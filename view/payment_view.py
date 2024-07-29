@@ -8,14 +8,14 @@ import tkinter.messagebox as msg
 
 
 class PaymentView:
-    def payment_table_click(self,row):
-        Payment = self.payment_table_click(int(row[0]))
+    def payment_table_click(self, row):
+        Payment = self.payment_da.find_by_id(int(row[0]))
         print(Payment)
 
 
     def save_click(self):
-        status, result = PaymentController.save(self.date_time.variable.get(), self.amount.variable.get(),
-                                                self.description.variable.get())
+        status, result = PaymentController.save(self.date_time.get(), self.amount.get(),
+                                                self.description.get())
         if status:
             msg.showinfo("PAYMENT SAVE",result)
             self.reset_form()
@@ -25,8 +25,8 @@ class PaymentView:
 
 
     def edit_click(self):
-        status, result = PaymentController.edit(self.date_time.variable.get(), self.amount.variable.get(),
-                                                self.description.variable.get())
+        status, result = PaymentController.edit(self.date_time.get(), self.amount.get(),
+                                                self.description.get())
         if status:
             msg.showinfo("PAYMENT EDIT",result)
             self.reset_form()
@@ -37,8 +37,8 @@ class PaymentView:
 
 
     def remove_click(self):
-        status, result = PaymentController.remove(self.date_time.variable.get(), self.amount.variable.get(),
-                                                self.description.variable.get())
+        status, result = PaymentController.remove(self.date_time.get(), self.amount.get(),
+                                                self.description.get())
         if status:
             msg.showinfo("PAYMENT REMOVE",result)
             self.reset_form()
