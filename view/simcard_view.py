@@ -8,9 +8,14 @@ import tkinter.messagebox as msg
 
 
 class SimCardView:
-    def sim_card_table_click(self, row):
-        SimCard = self.simcard_da.find_by_id(int(row[0]))
-        print(SimCard)
+    def reset_form(self):
+        self.table.delete(*self.table.get_children())
+        status, sim_card_list =SimCardController.findAll()
+        if status:
+            for sim_card in sim_card_list:
+                self.table.insert("",END,values=(sim_card.id,sim_card.number,sim_card.operator,sim_card.status,sim_card.sim_type,sim_card.charge))
+
+
 
     def save_click(self):
         status , result =SimCardController.save(self.number.variable.get(),self.operator.variable.get(),
@@ -58,7 +63,7 @@ class SimCardView:
         self.simcard_table = Table(self.win,["id","number", "operator", "status", "sim_type", "charge"],
                              [20,60,60,60,60,60],
                              300,20,
-                             self.sim_card_table_click)
+                             self.reset_form)
 
         self.total = TextWithLabel(self.win, "number:", 20, 20)
         self.total = TextWithLabel(self.win, "operator:", 20, 50)

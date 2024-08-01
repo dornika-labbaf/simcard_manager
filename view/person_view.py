@@ -7,9 +7,13 @@ from tkinter import *
 import tkinter.messagebox as msg
 
 class PersonView:
-    def person_table_click(self, row):
-        Person = self.person_da.find_by_id(int(row[0]))
-        print(Person)
+    def reset_form(self):
+        self.table.delete(*self.table.get_children())
+        status, person_list = PersonController.findAll()
+        if status:
+            for person in person_list:
+                self.table.insert("",END,values=(person.id,person.name,person.family,person.nid,person.date_birth,person.father_name,person.email,person.address))
+
 
     def person_save_click(self):
        status, result =PersonController.save(self.name.variable.get(),self.family.variable.get(),self.nid.variable.get(),
@@ -57,7 +61,7 @@ class PersonView:
         self.person_table = Table(self.win,["id","name", "family", "nid", "date_birth", "father_name", "email", "address"],
                              [20,60,40,40,40,40,40,50],
                              300,20,
-                             self.person_table_click)
+                             self.reset_form)
 
         self.total = TextWithLabel(self.win, "name:", 20, 20)
         self.total = TextWithLabel(self.win, "family:", 20, 50)
