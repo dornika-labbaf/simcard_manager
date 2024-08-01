@@ -1,7 +1,7 @@
+from tkinter import ttk
+
 from controller.person_controller import PersonController
-from model.da.da import DataAccess
 from model.entity.person import Person
-from view.component.table import Table
 from view.component.lable_text import TextWithLabel
 from tkinter import *
 import tkinter.messagebox as msg
@@ -52,30 +52,53 @@ class PersonView:
 
 
     def __init__(self):
-        self.person_da = DataAccess(Person)
 
         self.win = Tk()
         self.win.geometry("800x400")
         self.win.title("person")
 
-        self.person_table = Table(self.win,["id","name", "family", "nid", "date_birth", "father_name", "email", "address"],
-                             [20,60,40,40,40,40,40,50],
-                             300,20,
-                             self.reset_form)
+        self.id = TextWithLabel(self.win,"id",20,20)
+        self.id = TextWithLabel(self.win, "name", 20, 60)
+        self.id = TextWithLabel(self.win, "family", 20, 90)
+        self.id = TextWithLabel(self.win, "nid", 20, 110)
+        self.id = TextWithLabel(self.win, "date_birth", 20, 140)
+        self.id = TextWithLabel(self.win, "father_name", 20, 170)
+        self.id = TextWithLabel(self.win, "email", 20, 200)
+        self.id = TextWithLabel(self.win, "address", 20, 230)
 
-        self.total = TextWithLabel(self.win, "name:", 20, 20)
-        self.total = TextWithLabel(self.win, "family:", 20, 50)
-        self.total = TextWithLabel(self.win, "nid:", 20, 80)
-        self.total = TextWithLabel(self.win, "birth date:", 20, 110)
-        self.total = TextWithLabel(self.win, "father name:", 20, 140)
-        self.total = TextWithLabel(self.win, "email:", 20, 170)
-        self.total = TextWithLabel(self.win, "address:", 20, 200)
+
+
+
 
         Button(self.win, text="save", width=10,bg="sky blue", command=self.person_save_click).place(x=20, y=250)
         Button(self.win,text="edit",width=10,bg="seashell2",command=self.person_edit_click).place(x=110,y=250)
         Button(self.win,text="remove",width=10,bg="gold",command=self.person_remove_click).place(x=200,y=250)
 
-        self.win.bind()
+        self.table = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8), show="headings")
+
+        self.table.column(1, width=60)
+        self.table.column(2,width=100)
+        self.table.column(3, width=60)
+        self.table.column(4, width=100)
+        self.table.column(5, width=60)
+        self.table.column(6, width=60)
+        self.table.column(7, width=60)
+        self.table.column(8, width=60)
+
+
+        self.table.heading(1, text="id")
+        self.table.heading(1, text="name")
+        self.table.heading(1, text="family")
+        self.table.heading(1, text="nid")
+        self.table.heading(1, text="date_birth")
+        self.table.heading(1, text="father_name")
+        self.table.heading(1, text="email")
+        self.table.heading(1, text="address")
+
+        self.table.place(x=320,y=20)
+
+        self.reset_form()
+
         self.win.mainloop()
 
 

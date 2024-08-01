@@ -10,5 +10,5 @@ from view.person_view import PersonView
 #ui = SimCardView()
 
 
-ui = PaymentView()
+#ui = PaymentView()
 
