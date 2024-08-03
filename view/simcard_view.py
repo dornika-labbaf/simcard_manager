@@ -1,7 +1,6 @@
+from tkinter import ttk
+
 from controller.sim_card_controller import SimCardController
-from model.da.da import DataAccess
-from model.entity.sim_card import SimCard
-from view.component.table import Table
 from view.component.lable_text import TextWithLabel
 from tkinter import *
 import tkinter.messagebox as msg
@@ -54,27 +53,41 @@ class SimCardView:
 
 
     def __init__(self):
-        self.simcard_da = DataAccess(SimCard)
-
         self.win = Tk()
         self.win.geometry("800x400")
         self.win.title("simcard")
 
-        self.simcard_table = Table(self.win,["id","number", "operator", "status", "sim_type", "charge"],
-                             [20,60,60,60,60,60],
-                             300,20,
-                             self.reset_form)
-
-        self.total = TextWithLabel(self.win, "number:", 20, 20)
-        self.total = TextWithLabel(self.win, "operator:", 20, 50)
-        self.total = TextWithLabel(self.win, "status:", 20, 80)
-        self.total = TextWithLabel(self.win, "sim_type:", 20, 110)
-        self.total = TextWithLabel(self.win, "charge:", 20, 140)
+        self.id = TextWithLabel(self.win, "id", 20, 20)
+        self.number = TextWithLabel(self.win, "number:", 20, 50)
+        self.operator = TextWithLabel(self.win, "operator:", 20, 80)
+        self.status = TextWithLabel(self.win, "status:", 20, 110)
+        self.sim_type = TextWithLabel(self.win, "sim_type:", 20, 140)
+        self.charge = TextWithLabel(self.win, "charge:", 20, 170)
 
         Button(self.win, text="save", width=10,bg="sky blue", command=self.save_click).place(x=20, y=250)
         Button(self.win,text="edit",width=10,bg="seashell2",command=self.edit_click).place(x=110,y=250)
         Button(self.win,text="remove",width=10,bg="gold",command=self.remove_click).place(x=200,y=250)
-        self.win.bind()
+
+        self.table = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6), show="headings")
+
+        self.table.column(1, width=60)
+        self.table.column(2,width=100)
+        self.table.column(3, width=60)
+        self.table.column(4, width=100)
+        self.table.column(5, width=60)
+        self.table.column(6, width=60)
+
+
+        self.table.heading(1, text="id")
+        self.table.heading(1, text="number")
+        self.table.heading(1, text="operator")
+        self.table.heading(1, text="status")
+        self.table.heading(1, text="sim_type")
+        self.table.heading(1, text="charge")
+
+        self.table.place(x=320, y=20)
+
+        self.reset_form()
         self.win.mainloop()
 
 

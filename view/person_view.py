@@ -58,13 +58,13 @@ class PersonView:
         self.win.title("person")
 
         self.id = TextWithLabel(self.win,"id",20,20)
-        self.id = TextWithLabel(self.win, "name", 20, 60)
-        self.id = TextWithLabel(self.win, "family", 20, 90)
-        self.id = TextWithLabel(self.win, "nid", 20, 110)
-        self.id = TextWithLabel(self.win, "date_birth", 20, 140)
-        self.id = TextWithLabel(self.win, "father_name", 20, 170)
-        self.id = TextWithLabel(self.win, "email", 20, 200)
-        self.id = TextWithLabel(self.win, "address", 20, 230)
+        self.name = TextWithLabel(self.win, "name", 20, 60)
+        self.family = TextWithLabel(self.win, "family", 20, 90)
+        self.nid = TextWithLabel(self.win, "nid", 20, 110)
+        self.date_birth = TextWithLabel(self.win, "date_birth", 20, 140)
+        self.father_name = TextWithLabel(self.win, "father_name", 20, 170)
+        self.email = TextWithLabel(self.win, "email", 20, 200)
+        self.address = TextWithLabel(self.win, "address", 20, 230)
 
 
 
