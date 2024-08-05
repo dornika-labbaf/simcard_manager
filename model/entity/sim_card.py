@@ -2,6 +2,7 @@ import re
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from model.entity.base import Base
+from model.tools.validator import *
 
 
 class SimCard(Base):
@@ -41,7 +42,7 @@ class SimCard(Base):
 
     @number.setter
     def number(self, number):
-        self._number = number
+        self._number = number_validator(number,"invalid number")
 
     # oparator
     @property
@@ -50,7 +51,7 @@ class SimCard(Base):
 
     @operator.setter
     def operator(self, operator):
-        self._operator = operator
+        self._operator = operator_validator(operator, "invalid operator")
 
     # status
     @property
@@ -59,7 +60,7 @@ class SimCard(Base):
 
     @status.setter
     def status(self, status):
-        self._status = status
+        self._status = boolean_validator(status,"invalid status")
 
     # type
     @property
@@ -68,7 +69,7 @@ class SimCard(Base):
 
     @sim_type.setter
     def sim_type(self, sim_type):
-        self._sim_type =sim_type
+        self._sim_type =sim_type_validator(sim_type,"invalid type")
 
     # charge
     @property
@@ -77,7 +78,7 @@ class SimCard(Base):
 
     @charge.setter
     def charge(self, charge):
-        self._charge =charge
+        self._charge =positive_int_validator(charge, "invalid charge")
 
     @property
     def owner_id(self):
@@ -87,5 +88,3 @@ class SimCard(Base):
     def id(self, owner_id):
         self._owner_id = owner_id
 
-    def values(self):
-        return self.id, self._number, self.operator, self.status, self.sim_type, self.charge

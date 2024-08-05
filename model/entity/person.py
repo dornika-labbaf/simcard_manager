@@ -2,7 +2,8 @@ import re
 from model.entity.base import Base
 from sqlalchemy import Column, Integer, String, Date
 from model.entity import *
-from model.tools.validator import pattern_validator
+from model.tools.validator import*
+
 
 class Person(Base):
     __tablename__ = 'person_tbl'
@@ -41,7 +42,7 @@ class Person(Base):
 
     @name.setter
     def name(self, name):
-        self._name = name
+        self._name = name_validator(name,"invalid name")
 
     # nid
     @property
@@ -50,7 +51,7 @@ class Person(Base):
 
     @nid.setter
     def nid(self, nid):
-        self._nid = nid
+        self._nid = nid_validator(nid,"invalid nid")
 
     # date_birth
     @property
@@ -59,7 +60,7 @@ class Person(Base):
 
     @date_birth.setter
     def date_birth(self, date_birth):
-        self._date_birth = date_birth
+        self._date_birth = date_birth_validator(date_birth,"wrong date")
 
     # family
     @property
@@ -68,7 +69,7 @@ class Person(Base):
 
     @family.setter
     def family(self, family):
-        self._family = family
+        self._family = name_validator(family,"invalid family")
 
     # father_name
     @property
@@ -77,7 +78,7 @@ class Person(Base):
 
     @father_name.setter
     def father_name(self, father_name):
-        self._father_name = father_name
+        self._father_name = name_validator(father_name,"invalid father name")
 
     # email
     @property
@@ -86,7 +87,7 @@ class Person(Base):
 
     @email.setter
     def email(self, email):
-        self._email = email
+        self._email = email_validator(email,"invalid email")
 
     # address
     @property
@@ -95,4 +96,4 @@ class Person(Base):
 
     @address.setter
     def address(self, address):
-        self._address = address
+        self._address = address_validator(address,"invalid address")

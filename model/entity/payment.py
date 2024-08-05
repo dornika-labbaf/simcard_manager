@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 
 from model.entity import *
+from model.tools.validator import *
 
 
 class Payment(Base):
@@ -46,7 +47,7 @@ class Payment(Base):
 
     @date_time.setter
     def date_time(self, date_time):
-        self._date_time = date_time
+        self._date_time = date_time_validator(date_time,"invalid date")
 
     # amount
     @property
@@ -55,7 +56,7 @@ class Payment(Base):
 
     @amount.setter
     def amount(self, amount):
-        self._amount = amount
+        self._amount = positive_int_validator(amount, "invalid amount")
 
     # description
     @property
@@ -64,7 +65,7 @@ class Payment(Base):
 
     @description.setter
     def description(self, description):
-        self._description = description
+        self._description = name_validator(description,"invalid description")
 
 
 
@@ -88,6 +89,5 @@ class Payment(Base):
 
 
 
-    def values(self):
-        return self.id, self.date_time, self.amount , self.amount
+
 
