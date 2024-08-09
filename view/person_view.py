@@ -1,7 +1,7 @@
 from tkinter import ttk
 
 from controller.person_controller import PersonController
-from model.entity.person import Person
+
 from view.component.lable_text import TextWithLabel
 from tkinter import *
 import tkinter.messagebox as msg
