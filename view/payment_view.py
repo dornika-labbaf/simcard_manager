@@ -77,9 +77,9 @@ class PaymentView:
 
 
         self.table.heading(1, text="id")
-        self.table.heading(1, text="date time")
-        self.table.heading(1, text="amount")
-        self.table.heading(1, text="description")
+        self.table.heading(2, text="date time")
+        self.table.heading(3, text="amount")
+        self.table.heading(4, text="description")
 
         self.table.place(x=320,y=20)
 

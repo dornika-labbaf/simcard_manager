@@ -79,11 +79,11 @@ class SimCardView:
 
 
         self.table.heading(1, text="id")
-        self.table.heading(1, text="number")
-        self.table.heading(1, text="operator")
-        self.table.heading(1, text="status")
-        self.table.heading(1, text="sim_type")
-        self.table.heading(1, text="charge")
+        self.table.heading(2, text="number")
+        self.table.heading(3, text="operator")
+        self.table.heading(4, text="status")
+        self.table.heading(5, text="sim_type")
+        self.table.heading(6, text="charge")
 
         self.table.place(x=320, y=20)
 

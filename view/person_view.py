@@ -87,13 +87,13 @@ class PersonView:
 
 
         self.table.heading(1, text="id")
-        self.table.heading(1, text="name")
-        self.table.heading(1, text="family")
-        self.table.heading(1, text="nid")
-        self.table.heading(1, text="date_birth")
-        self.table.heading(1, text="father_name")
-        self.table.heading(1, text="email")
-        self.table.heading(1, text="address")
+        self.table.heading(2, text="name")
+        self.table.heading(3, text="family")
+        self.table.heading(4, text="nid")
+        self.table.heading(5, text="date_birth")
+        self.table.heading(6, text="father_name")
+        self.table.heading(7, text="email")
+        self.table.heading(8, text="address")
 
         self.table.place(x=320,y=20)
 
