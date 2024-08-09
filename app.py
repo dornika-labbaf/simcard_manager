@@ -12,32 +12,38 @@ class FrontView:
 
 
     def show_view_person(self):
-        msg.showinfo("question","مشخصات فردی خود را وارد کنید")
+        #msg.showinfo("question","مشخصات فردی خود را وارد کنید")
         ui = PersonView()
+        ui.show()
 
     def show_view_sim_card(self):
         ui = SimCardView()
+        ui.show()
+
+    def show_view_payment(self):
+        ui = PaymentView()
+        ui.show()
 
 
     def show(self):
         self.win = Tk()
-        self.win.title("view")
+        self.win.title("مدیریت سیمکارت")
         self.win.geometry("400x400")
 
-        Button(self.win, text="ایجاد حساب",command=self.show_view_person).place(x=20,y=20)
-        Button(self.win,text="مشخصات سیم کارت",command=self.show_view_sim_card).place(x=20,y=60)
-
-        self.table = ttk.Treeview(self.win, columns=(1,2),show="headings")
-
-        self.table.place(x=300,y=20)
+        frame1 = Frame(self.win, bd=2, relief="sunken")
+        frame1.place(x=10, y=10, width=300, height=180)
 
 
-        self.reset_form()
+
+        Label(frame1, text="مشخصات فردی خود را وارد کنید")
+        Button(frame1, text="  ثبت مشخصات فردی ",command=self.show_view_person).place(x=20,y=20)
+        Button(frame1,text="ثبت سیم کارت",command=self.show_view_sim_card).place(x=20,y=60)
+        Button(frame1, text="ثبت فروش", command=self.show_view_payment).place(x=20, y=100)
 
 
         self.win.mainloop()
 
 
-ui = PersonView()
+ui = FrontView()
 ui.show()
 
